@@ -17,75 +17,58 @@ namespace Ace.Business
                 vs = new string[36];
             List<string> ls = DataSplit(value, type);//数据拆分后的数组
 
+            int nowIndex = 0;//当前拆分数组的位置
+            int nowValue = 0;//当前有效数组的值
             for (int i=0;i<ls.Count;i++)
             {
                 var start = ls[i].Substring(0, 1);
+                var myIndex = ls[i].Substring(1, 2);
                 switch (start)
                 {
                     case "2":
+                        
                         if (i == 0)
                         {
-                            vs[Convert.ToInt32(ls[i].Substring(1, 2))] = "0";
+                            vs[nowIndex] = "0";
                         }
                         else
                         {
-                            int cc = Convert.ToInt32(ls[i].Substring(1, 2)) - Convert.ToInt32(ls[i - 1].Substring(1, 2));
+                            int cc = Convert.ToInt32(myIndex) - nowIndex;
                             for (int j = 0; j <= cc; j++)
                             {
-                                vs[Convert.ToInt32(ls[i - 1].Substring(1, 2)) + j + 1] = (Convert.ToInt32((vs[Convert.ToInt32(ls[i - 1].Substring(1, 2))])) + 1) + "";
+                                vs[nowIndex + j + 1] = (nowValue + 1) + "";
                             }
-                            
                         }
-                        
+                        nowIndex = Convert.ToInt16(myIndex);
+                        nowValue = Convert.ToInt16(vs[nowIndex]);
                         break;
                     case "0"://在前面一个基础上加一
-                        vs[Convert.ToInt32(ls[i].Substring(1, 2))] = (Convert.ToInt32((vs[Convert.ToInt32(ls[i - 1].Substring(1, 2))])) + 1) + "";
+                        vs[Convert.ToInt16(myIndex)] = (nowValue + 1) + "";
+                        nowIndex = Convert.ToInt16(myIndex);
+                        nowValue = Convert.ToInt16(vs[nowIndex]);
                         break;
                     case "8"://跟前面一个不是8开头的一样
-                        for (int t = 1; ; t++)
-                        {
-                            int ps = Convert.ToInt32(ls[i - t].Substring(0, 1));
-                            if (ps != 8)
-                            {
-                                int ln = Convert.ToInt32(ls[i - t].Substring(1, 2));
-                                vs[ln + t] = vs[ln];
-                                break;
-                            }
-                            else
-                            {
-                                continue;
-                            }
-                        }
+                        vs[Convert.ToInt16(nowIndex) + 1] = nowValue + "";
+                        nowIndex += 1;
                         break;
                     case "3"://跟前面一个一样,个数需要减一下
-                        int pp = Convert.ToInt32(ls[i].Substring(1, 2)) - Convert.ToInt32(ls[i - 1].Substring(1, 2));
-                        for (int j = 0; j < pp; j++)
-                        {
-                            vs[Convert.ToInt32(ls[i - 1].Substring(1, 2)) + j + 1] = (vs[Convert.ToInt32(ls[i - 1].Substring(1, 2))]);
-                        }
+                        vs[Convert.ToInt16(myIndex)] = nowValue + "";
+                        nowIndex = Convert.ToInt16(myIndex);
                         break;
                     case "4": 
-                        vs[Convert.ToInt32(ls[i].Substring(1, 2))] = "0";
+                        vs[Convert.ToInt16(myIndex)] = "0";
                         break;
                     case "_":
-                        for (int t = 1; ; t++)
+                        var laststart = ls[nowIndex].Substring(0, 1);
+                        if (laststart.Equals("2"))//上升
                         {
-                            if (ls[i - t].Substring(0, 1).Equals("_")) continue;
-                            int ps = Convert.ToInt32(ls[i - t].Substring(0, 1));
-                            if (ps==2)//上升
-                            {
-                                int ln = Convert.ToInt32(ls[i - t].Substring(1, 2));
-                                vs[ln + t] = (Convert.ToInt32(vs[ln]) + t) + "";
-                                break;
-                            }
-                            else//下降
-                            {
-                                int ln = Convert.ToInt32(ls[i - t].Substring(1, 2));
-                                vs[ln + t] = (Convert.ToInt32(vs[ln]) - t) + "";
-                                break;
-                            }
+                            vs[Convert.ToInt16(myIndex)] = (nowValue + 1) + "";
                         }
-                        
+                        else
+                        {
+                            vs[Convert.ToInt16(myIndex)] = (nowValue - 1) + "";
+                        }
+                        nowValue = Convert.ToInt16(vs[Convert.ToInt16(myIndex)]);
                         break;
                     default:
                         break;
