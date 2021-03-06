@@ -70,6 +70,7 @@
     <Compile Include="Common\AppConsts.cs" />
     <Compile Include="Common\UserHelper.cs" />
     <Compile Include="Implements\AccountAppService.cs" />
+    <Compile Include="Implements\Business\CoalField.cs" />
     <Compile Include="Implements\System\DepartmentAppService.cs" />
     <Compile Include="Implements\System\DutyAppService.cs" />
     <Compile Include="Implements\System\ModuleAppService.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Implements\SysLogAppService.cs" />
     <Compile Include="Implements\Wiki\WikiDocumentAppService.cs" />
     <Compile Include="Implements\Wiki\WikiMenuItemAppService.cs" />
+    <Compile Include="Interfaces\Business\ICoalField.cs" />
     <Compile Include="Interfaces\IAccountAppService.cs" />
     <Compile Include="Interfaces\System\IDepartmentAppService.cs" />
     <Compile Include="Interfaces\System\IDutyAppService.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Interfaces\Wiki\IWikiDocumentAppService.cs" />
     <Compile Include="Interfaces\Wiki\IWikiMenuItemAppService.cs" />
     <Compile Include="Models\Account\ModifyAccountInfoInput.cs" />
+    <Compile Include="Models\Business\CoalField.cs" />
     <Compile Include="Models\Department\AddOrUpdateDepartmentInput.cs" />
     <Compile Include="Models\Department\SimpleDepartmentModel.cs" />
     <Compile Include="Models\Duty\AddorUpdateDutyInput.cs" />

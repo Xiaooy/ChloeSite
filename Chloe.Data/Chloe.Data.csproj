@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BizDbContext.cs" />
     <Compile Include="DbContextFactory.cs" />
     <Compile Include="DbHelper.cs" />
     <Compile Include="MySqlConnectionFactory.cs" />

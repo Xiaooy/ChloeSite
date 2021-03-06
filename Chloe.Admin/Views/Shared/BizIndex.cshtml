@@ -1,0 +1,20 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @Html.RefScript("~/Content/jquery/jquery-1.11.1.min.js")
+    @*@Html.RefScript("~/Content/js/framework-ui.js")*@
+
+    @Html.RefScript("~/Content/layui2.5.7/layui.js")
+
+    @Html.RefStyle("~/Content/layui2.5.7/css/layui.css")
+
+    @Html.RefScript("~/Content/echarts/dist/echarts.min.js")
+</head>
+<body>
+    @RenderBody()
+    @Html.AntiForgeryToken()
+</body>
+</html>

@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Biz_MC1.cs" />
+    <Compile Include="Biz_MC2.cs" />
     <Compile Include="DbTables.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\LogType.cs" />
@@ -61,6 +63,12 @@
     <Compile Include="WikiDocument.cs" />
     <Compile Include="WikiDocumentDetail.cs" />
     <Compile Include="WikiMenuItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ace\Ace.csproj">
+      <Project>{c7dfa311-7c0c-4eb0-802e-b4d11043d54b}</Project>
+      <Name>Ace</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

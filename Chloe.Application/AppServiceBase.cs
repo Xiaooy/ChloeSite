@@ -15,6 +15,8 @@ namespace Chloe.Application
     {
         IDbContext _dbContext;
 
+        IDbContext _dbContextBiz;
+
         protected AppServiceBase()
             : this(null)
         {
@@ -36,6 +38,20 @@ namespace Chloe.Application
             set
             {
                 this._dbContext = value;
+            }
+        }
+
+        public IDbContext dbContextBiz
+        {
+            get
+            {
+                if (this._dbContextBiz == null)
+                    this._dbContextBiz = BizDbContext.CreateContext();
+                return this._dbContextBiz;
+            }
+            set
+            {
+                this._dbContextBiz = value;
             }
         }
 

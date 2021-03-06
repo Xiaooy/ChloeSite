@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/BizIndex.cshtml";
+}
+
+<div>
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;" class="layui-form">
+
+        <div class="layui-row">
+            <div class="layui-inline">
+                <input type="text" class="layui-input" id="c-date">
+
+            </div>
+            <div class="layui-inline">
+
+                <select name="Type" lay-filter="c-Type" lay-verify="required" >
+                    <option value="1">一期煤场</option>
+                    <option value="2">二期煤场</option>
+                </select>
+
+            </div>
+            <div class="layui-inline">
+                <button type="button" class="layui-btn layui-btn-normal" id="OK">确定</button>
+            </div>
+        </div>
+
+
+        <div class="layui-row" >
+            <div class="layui-row">
+                <div id="container1" style="height: 300px"></div>
+            </div>
+            <div class="layui-row">
+                <table id="heap1" lay-filter="heap1"></table>
+            </div>
+        </div>
+        <div class="layui-row" >
+            <div class="layui-row">
+                <div id="container2" style="height: 300px"></div>
+            </div>
+            <div class="layui-row">
+                <table id="heap2" lay-filter="heap2"></table>
+            </div>
+        </div>
+        <div class="layui-row" >
+            <div class="layui-row">
+                <div id="container3" style="height: 300px"></div>
+            </div>
+            <div class="layui-row">
+                <table id="heap3" lay-filter="heap3"></table>
+            </div>
+        </div>
+        <div class="layui-row" >
+            <div class="layui-row">
+                <div id="container4" style="height: 300px"></div>
+            </div>
+            <div class="layui-row">
+                <table id="heap4" lay-filter="heap4"></table>
+            </div>
+        </div>
+        <div class="layui-row" >
+            <div class="layui-row">
+                <table id="heap0" lay-filter="heap0"></table>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.RefScript("~/Content/Business/Index.js")
+@Html.RefScript("~/Content/Business/CoalField/Index.js")

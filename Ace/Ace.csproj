@@ -57,6 +57,7 @@
     <Compile Include="Application\ValidationModel.cs" />
     <Compile Include="Attributes\DisposableAttribute.cs" />
     <Compile Include="Attributes\ObsoleteApiAttribute.cs" />
+    <Compile Include="Business\DataHelper.cs" />
     <Compile Include="DateTime\DateTimeHelper.cs" />
     <Compile Include="AceSession`.cs" />
     <Compile Include="Exceptions\InvalidDataException.cs" />

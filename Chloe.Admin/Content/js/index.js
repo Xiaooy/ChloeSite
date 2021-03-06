@@ -156,20 +156,27 @@ function GetLoadNav() {
     $.each(data, function (i) {
         var row = data[i];
         if (row.ParentId == null) {
-            _html += '<li>';
-            _html += '<a data-id="' + row.Id + '" href="#" class="dropdown-toggle"><i class="' + row.Icon + '"></i><span>' + row.Name + '</span><i class="fa fa-angle-right drop-icon"></i></a>';
-            var childNodes = row.ChildNodes;
-            if (childNodes.length > 0) {
-                _html += '<ul class="submenu">';
-                $.each(childNodes, function (i) {
-                    var subrow = childNodes[i];
-                    _html += '<li>';
-                    _html += '<a class="menuItem" data-id="' + subrow.Id + '" href="' + subrow.UrlAddress + '" data-index="' + subrow.SortCode + '">' + subrow.Name + '</a>';
-                    _html += '</li>';
-                });
-                _html += '</ul>';
+            if (row.IsMenu) {
+                _html += '<li>';
+                _html += '<a class="menuItem" data-id="' + row.Id + '" href="' + row.UrlAddress + '" data-index="' + row.SortCode + '"><i class="' + row.Icon + '"></i><span>' + row.Name + '</span></a>';
+                _html += '</li>';
+            } else {
+                _html += '<li>';
+                _html += '<a data-id="' + row.Id + '" href="#" class="dropdown-toggle"><i class="' + row.Icon + '"></i><span>' + row.Name + '</span><i class="fa fa-angle-right drop-icon"></i></a>';
+                var childNodes = row.ChildNodes;
+                if (childNodes.length > 0) {
+                    _html += '<ul class="submenu">';
+                    $.each(childNodes, function (i) {
+                        var subrow = childNodes[i];
+                        _html += '<li>';
+                        _html += '<a class="menuItem" data-id="' + subrow.Id + '" href="' + subrow.UrlAddress + '" data-index="' + subrow.SortCode + '">' + subrow.Name + '</a>';
+                        _html += '</li>';
+                    });
+                    _html += '</ul>';
+                }
+                _html += '</li>';
             }
-            _html += '</li>';
+            
         }
     });
 

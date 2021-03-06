@@ -14,7 +14,7 @@ $.clientsInit = function () {
     };
     var init = function () {
         $.ajax({
-            url: "../Home/GetClientsDataJson",
+            url: "../ChloneAce/Home/GetClientsDataJson",
             type: "get",
             dataType: "json",
             async: false,
