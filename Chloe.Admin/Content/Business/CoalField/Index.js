@@ -2,7 +2,7 @@
 var c_date = '';
 var color=["","red","green","blue","yellow"]
 var heap = ["未入场", "一号场", "二号场", "三号场", "四号场"]
-var map=[[]]
+var map=[]
 
 layui.use(['laydate', 'form', 'table'], function () {
     var laydate = layui.laydate;
@@ -43,7 +43,8 @@ function loadtabledata(table) {
     for (var i = 0; i < 5; i++) {
         //第一个实例
         table.render({
-            elem: `#heap${i}`
+             bs:i
+            ,elem: `#heap${i}`
             , height: 312
             , url: url.GetMCPageData + `?date=${c_date}&heap=${i}&type=${c_Type}` //数据接口
             //, where: { Page: 1, PageSize: 10 } //如果无需传递额外参数，可不加该参数
@@ -51,6 +52,7 @@ function loadtabledata(table) {
             , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
                 //map.push(res.Data.mdt)
                 //loadChart(res.Data.mdt,i);
+                
                 return {
                     "code": '0', //解析接口状态
                     "msg": '', //解析提示文本
@@ -67,8 +69,32 @@ function loadtabledata(table) {
                 console.log(curr);
 
                 //得到数据总量
-                console.log(count);
-                //loadChart(res.data.mdt, i);
+                console.log(this);
+                
+                if (this.bs != 0) {
+                    var aa = [];
+                    for (var j = 0; j < res.data.length; j++) {
+                        aa.push({
+                            data: res.data[j].mdt,
+                            type: 'line',
+                            areaStyle: {},
+                            symbol: 'none',
+                            areaStyle: {
+                                opacity: 0.8,
+                                color: color[j]
+                            },
+                            itemStyle: {
+                                normal: {
+                                    lineStyle: {
+                                        color: color[j]
+                                    }
+                                }
+                            }
+                        });
+                    }
+                    loadChart(aa, this.bs);
+                }
+                
             }
             , page: true //开启分页
             , cols: [
@@ -115,10 +141,12 @@ function xdata(length) {
     return x;
 }
 
-function loadChart() {
-    for (var i = 0; i < 5; i++) {
+function loadChart(series,i) {
+    
+    //for (var i = 0; i < 5; i++) {
         if (i === 0)
-            continue;
+            //continue;
+            return;
         var dom = document.getElementById("container" + i);
         var myChart = echarts.init(dom);
 
@@ -130,12 +158,13 @@ function loadChart() {
                 },
                 yAxis: {
                     type: 'value'
-                },
-                series: [{
-                    data: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "0", "1", "1", "1", "1", "1", "1", "1", "0", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-                    type: 'line',
-                    areaStyle: {}
-                }]
+               },
+              series:series
+                //series: [{
+                //    data: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "0", "1", "1", "1", "1", "1", "1", "1", "0", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+                //    type: 'line',
+                //    areaStyle: {}
+                //}]
         };
 
         var option2 = {
@@ -147,11 +176,12 @@ function loadChart() {
             yAxis: {
                 type: 'value'
             },
-            series: [{
-                data: [, , , , , 1, 0, 2, 1, , ,],
-                type: 'line',
-                areaStyle: {}
-            }]
+            series: series
+            //series: [{
+            //    data: [, , , , , 1, 0, 2, 1, , ,],
+            //    type: 'line',
+            //    areaStyle: {}
+            //}]
         };
         if (c_Type == "1") {
             if (option1 && typeof option1 === 'object') {
@@ -162,7 +192,9 @@ function loadChart() {
                 myChart.setOption(option2);
             }
         }
-    }
+
+       // map.push(myChart);
+    //}
 }
 
 

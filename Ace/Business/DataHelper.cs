@@ -8,25 +8,25 @@ namespace Ace.Business
 {
     public class DataHelper
     {
-        public static string[] ConvertList(string value,int type)
+        public static string[] ConvertList(string value, int type)
         {
             string[] vs = null;//结果集
-            if(type==1)
+            if (type == 1)
                 vs = new string[70];
-            else 
+            else
                 vs = new string[36];
             List<string> ls = DataSplit(value, type);//数据拆分后的数组
 
             int nowIndex = 0;//当前拆分数组的位置
             int nowValue = 0;//当前有效数组的值
-            for (int i=0;i<ls.Count;i++)
+            for (int i = 0; i < ls.Count; i++)
             {
                 var start = ls[i].Substring(0, 1);
                 var myIndex = ls[i].Substring(1, 2);
                 switch (start)
                 {
                     case "2":
-                        
+
                         if (i == 0)
                         {
                             vs[nowIndex] = "0";
@@ -55,11 +55,21 @@ namespace Ace.Business
                         vs[Convert.ToInt16(myIndex)] = nowValue + "";
                         nowIndex = Convert.ToInt16(myIndex);
                         break;
-                    case "4": 
+                    case "4":
                         vs[Convert.ToInt16(myIndex)] = "0";
                         break;
                     case "_":
-                        var laststart = ls[nowIndex].Substring(0, 1);
+                        var laststart = "2";
+                        for (var j=1; ; j++)
+                        {
+                            var lss = ls[i-j].Substring(0, 1);
+                            if (!lss.Equals("_"))
+                            {
+                                laststart = lss;
+                                myIndex = (Convert.ToInt16(ls[i - j].Substring(1, 2)) + j)+"";
+                                break ;
+                            }
+                        }
                         if (laststart.Equals("2"))//上升
                         {
                             vs[Convert.ToInt16(myIndex)] = (nowValue + 1) + "";
@@ -87,9 +97,9 @@ namespace Ace.Business
             int c = (type == 1 ? 3 : 4);
             int l = value.Length / c;
             List<string> ls = new List<string>();
-            for(int i = 0; i < l; i++)
+            for (int i = 0; i < l; i++)
             {
-                ls.Add(value.Substring(i*c,c));
+                ls.Add(value.Substring(i * c, c));
             }
 
             return ls;
