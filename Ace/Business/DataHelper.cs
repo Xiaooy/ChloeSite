@@ -18,7 +18,6 @@ namespace Ace.Business
             List<string> ls = DataSplit(value, type);//数据拆分后的数组
             //210218220023888888328______431
             //233237244246048367_________471
-            //208_________012331_________435
             int nowIndex = 0;//当前拆分数组的位置
             int nowValue = 0;//当前有效数组的值
             for (int i = 0; i < ls.Count; i++)
@@ -41,37 +40,29 @@ namespace Ace.Business
                             int cc = Convert.ToInt32(myIndex) - nowIndex;
                             for (int j = 1; j <= cc; j++)
                             {
-                                vs[nowIndex + j] = (nowValue + 1) + "";
+                                vs[nowIndex + j] = (nowValue+1) + "";
                             }
                         }
                         nowIndex = Convert.ToInt16(myIndex);
                         nowValue = Convert.ToInt16(vs[nowIndex]);
                         break;
                     case "0"://在前面一个基础上加一
-
-                        if (pt.Equals("_"))
+                        float aa = Convert.ToInt32(myIndex) - nowIndex;
+                        float v = 1 / aa;
+                        for (int j = 1; j <= aa; j++)
                         {
-                            vs[Convert.ToInt32(myIndex)] = (nowValue + 1) + "";
-                        }
-                        else
-                        {
-                            float aa = Convert.ToInt32(myIndex) - nowIndex;
-                            float v = 1 / aa;
-                            for (int j = 1; j <= aa; j++)
-                            {
-                                //vs[nowIndex + j] = (nowValue + j) + "";
-                                vs[nowIndex + j] = j == aa ? (nowValue + 1) + "" : (nowValue + v * j) + "";
-                            }
+                            //vs[nowIndex + j] = (nowValue + j) + "";
+                            vs[nowIndex + j] = j == aa ? (nowValue + 1) + "" : (nowValue + v * j) + "";
                         }
                         nowIndex = Convert.ToInt16(myIndex);
-                        nowValue = Convert.ToInt16(vs[nowIndex]);
+                        nowValue = Convert.ToInt16(vs[Convert.ToInt32(myIndex)]);
                         break;
                     case "8"://后面一个不是8的位置减去前面一个的位置
-
+                        
                         for (var j = 1; ; j++)
                         {
                             var lss = ls[i + j].Substring(0, 1);
-                            if (!lss.Equals("8"))
+                            if(!lss.Equals("8"))
                             {
                                 var not8index = ls[i + j].Substring(1, 2);
                                 var cc = Convert.ToInt16(not8index) - Convert.ToInt16(nowIndex);//差值
@@ -84,22 +75,15 @@ namespace Ace.Business
                         }
                         break;
                     case "3"://跟前面一个一样,个数需要减一下
-
                         var dd = Convert.ToInt16(myIndex) - Convert.ToInt16(nowIndex);//差值
-
+                        
                         for (var j = 1; j <= dd; j++)
                         {
-                            if (pt.Equals("3"))
-                            {
-                                vs[nowIndex + j] = (nowValue - 1) + "";
-                            }
-                            else
-                            {
-                                vs[nowIndex + j] = (nowValue) + "";
-                            }
+                            vs[nowIndex + j] = (nowValue) + "";
+                            //vs[nowIndex + j] = (nowValue + v * j) + "";
                         }
                         nowIndex = Convert.ToInt16(myIndex);
-                        nowValue = Convert.ToInt16(vs[nowIndex]);
+                        nowValue = Convert.ToInt16(vs[Convert.ToInt32(myIndex) - 1]);
                         break;
                     case "4":
                         vs[Convert.ToInt16(myIndex)] = "0";
