@@ -79,6 +79,7 @@ function loadtabledata(table) {
                             type: 'line',
                             areaStyle: {},
                             symbol: 'none',
+                            color:color[j],
                             areaStyle: {
                                 opacity: 0.8,
                                 color: color[j]
@@ -135,7 +136,7 @@ function loadtabledata(table) {
 
 function xdata(length) {
     var x = [];
-    for (var i = 1; i <= length; i++) {
+    for (var i = 0; i <= length; i++) {
         x.push(i);
     }
     return x;
@@ -154,11 +155,14 @@ function loadChart(series,i) {
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                   data: xdata(70)
+                   data: xdata(81)
                 },
                 yAxis: {
                     type: 'value'
-               },
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
               series:series
                 //series: [{
                 //    data: [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "0", "1", "1", "1", "1", "1", "1", "1", "0", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
@@ -175,6 +179,9 @@ function loadChart(series,i) {
             },
             yAxis: {
                 type: 'value'
+            },
+            tooltip: {
+                trigger: 'axis'
             },
             series: series
             //series: [{
