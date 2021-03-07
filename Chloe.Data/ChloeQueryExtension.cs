@@ -77,8 +77,14 @@ namespace Chloe
         public static PagedData<T> TakePageData<T>(this IQuery<T> q, Pagination page)
         {
             PagedData<T> pageData = page.ToPagedData<T>();
-
-            pageData.DataList = q.TakePage(page.Page, page.PageSize).ToList();
+            if(page.Page==0 || page.PageSize == 0)
+            {
+                pageData.DataList = q.ToList();
+            }
+            else
+            {
+                pageData.DataList = q.TakePage(page.Page, page.PageSize).ToList();
+            }
             pageData.TotalCount = q.Count();
 
             return pageData;

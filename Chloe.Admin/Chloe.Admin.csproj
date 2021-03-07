@@ -100,6 +100,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Business\CoalChar\index.js" />
     <Content Include="Content\Business\CoalField\Index.js" />
     <Content Include="Content\Business\index.js" />
     <Content Include="Content\echarts\dist\echarts.common.js" />
@@ -125,6 +126,8 @@
     <Content Include="Content\editormd\plugins\reference-link-dialog\reference-link-dialog.js" />
     <Content Include="Content\editormd\plugins\table-dialog\table-dialog.js" />
     <Content Include="Content\editormd\plugins\test-plugin\test-plugin.js" />
+    <Content Include="Content\jRange\jquery.range.css" />
+    <Content Include="Content\jRange\jquery.range.js" />
     <Content Include="Content\layui2.5.7\css\layui.css" />
     <Content Include="Content\layui2.5.7\css\layui.mobile.css" />
     <Content Include="Content\layui2.5.7\css\modules\code.css" />
@@ -770,6 +773,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Business\BusinessAreaRegistration.cs" />
+    <Compile Include="Areas\Business\Controllers\CoalCharController.cs" />
     <Compile Include="Areas\Business\Controllers\CoalFieldController.cs" />
     <Compile Include="Areas\SystemManage\Controllers\DepartmentController.cs" />
     <Compile Include="Areas\SystemManage\Controllers\DutyController.cs" />
@@ -867,6 +871,7 @@
     <Content Include="Content\echarts\dist\echarts.simple.js.map" />
     <Content Include="Content\echarts\dist\extension\bmap.js.map" />
     <Content Include="Content\echarts\dist\extension\dataTool.js.map" />
+    <Content Include="Areas\Business\Views\CoalChar\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

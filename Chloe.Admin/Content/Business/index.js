@@ -2,5 +2,6 @@
 
 
 var url = {
-    GetMCPageData: s +"/CoalField/GetMCPageData"
+    GetMCPageData: s + "/CoalField/GetMCPageData",
+    UpdateMC: s + "/CoalField/UpdateMC"
 }

@@ -81,6 +81,10 @@ namespace Ace
             {
                 if (this.TotalCount > 0)
                 {
+                    if (this.PageSize == 0 || this.CurrentPage == 0)
+                    {
+                        return 1;
+                    }
                     return this.TotalCount % this.PageSize == 0 ? this.TotalCount / this.PageSize : this.TotalCount / this.PageSize + 1;
                 }
                 else

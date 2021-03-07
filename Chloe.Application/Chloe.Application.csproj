@@ -96,7 +96,7 @@
     <Compile Include="Interfaces\Wiki\IWikiDocumentAppService.cs" />
     <Compile Include="Interfaces\Wiki\IWikiMenuItemAppService.cs" />
     <Compile Include="Models\Account\ModifyAccountInfoInput.cs" />
-    <Compile Include="Models\Business\CoalField.cs" />
+    <Compile Include="Models\Business\CoalPile.cs" />
     <Compile Include="Models\Department\AddOrUpdateDepartmentInput.cs" />
     <Compile Include="Models\Department\SimpleDepartmentModel.cs" />
     <Compile Include="Models\Duty\AddorUpdateDutyInput.cs" />

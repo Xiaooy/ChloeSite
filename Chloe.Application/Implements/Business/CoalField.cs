@@ -1,5 +1,6 @@
 ﻿using Ace;
 using Chloe.Application.Interfaces.Business;
+using Chloe.Application.Models.Business;
 using Chloe.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,13 @@ namespace Chloe.Application.Implements.Business
 {
     public class CoalField : AdminAppService, ICoalField
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="page">分页信息</param>
+        /// <param name="data">日期</param>
+        /// <param name="heap">煤场号</param>
+        /// <returns></returns>
         public PagedData<Biz_MC1> GetMC1PageData(Pagination page, string data, string heap)
         {
            var query= this.dbContextBiz.Query<Biz_MC1>(x => x.Mch == heap);
@@ -26,6 +34,13 @@ namespace Chloe.Application.Implements.Business
             return pagedData;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="data"></param>
+        /// <param name="heap"></param>
+        /// <returns></returns>
         public PagedData<Biz_MC2> GetMC2PageData(Pagination page, string data, string heap)
         {
             var query = this.dbContextBiz.Query<Biz_MC2>(x => x.Mch == heap);
@@ -39,6 +54,58 @@ namespace Chloe.Application.Implements.Business
                 item.setMdt();
             }
             return pagedData;
+        }
+
+        public void UpdateMC(CoalPile cp,string type)
+        {
+            cp.Validate();
+            if (type == "1")
+            {
+                this.dbContextBiz.Update<Biz_MC1>(x => x.Id == cp.Id, x => new Biz_MC1()
+                {
+                    Bh = cp.Bh,
+                    Mch = cp.Mch,
+                    Dh = cp.Dh,
+                    Cbh = cp.Cbh,
+                    Pzbh = cp.Pzbh,
+                    Cl = cp.Cl,
+                    Dq = cp.Dq,
+                    Wzdm = cp.Wzdm,
+                    Mzmc = cp.Mzmc,
+                    Cm = cp.Cm,
+                    Hf = cp.Hf,
+                    Hff = cp.Hff,
+                    Rz = cp.Rz,
+                    Sf = cp.Sf,
+                    T2 = cp.T2,
+                    Lf = cp.Lf,
+
+                });
+            }
+            else
+            {
+                this.dbContextBiz.Update<Biz_MC2>(x => x.Id == cp.Id, x => new Biz_MC2()
+                {
+                    Bh = cp.Bh,
+                    Mch = cp.Mch,
+                    Dh = cp.Dh,
+                    Cbh = cp.Cbh,
+                    Pzbh = cp.Pzbh,
+                    Cl = cp.Cl,
+                    Dq = cp.Dq,
+                    Wzdm = cp.Wzdm,
+                    Mzmc = cp.Mzmc,
+                    Cm = cp.Cm,
+                    Hf = cp.Hf,
+                    Hff = cp.Hff,
+                    Rz = cp.Rz,
+                    Sf = cp.Sf,
+                    T2 = cp.T2,
+                    Lf = cp.Lf,
+                });
+
+            }
+           
         }
 
          

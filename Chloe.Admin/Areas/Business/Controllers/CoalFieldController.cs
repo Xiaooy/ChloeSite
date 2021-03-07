@@ -9,6 +9,7 @@ using Chloe.Application.Models.Department;
 using Chloe.Entities;
 using Ace;
 using Chloe.Application.Interfaces.Business;
+using Chloe.Application.Models.Business;
 
 namespace Chloe.Admin.Areas.Business.Controllers
 {
@@ -23,7 +24,7 @@ namespace Chloe.Admin.Areas.Business.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetMCPageData(int page, int limit, string date, string heap, string type)
+        public ActionResult GetMCPageData(string date, string heap, string type, int page = 0, int limit = 0)
         {
             date = date.IsNotNullOrEmpty() ? date.Replace("-", "") : "";
             Pagination p = new Pagination(page, limit);
@@ -37,6 +38,13 @@ namespace Chloe.Admin.Areas.Business.Controllers
                 PagedData<Biz_MC2> pagedData = this.CreateService<ICoalField>().GetMC2PageData(p, date, heap);
                 return this.SuccessData(pagedData);
             }
+        }
+
+        [HttpPost]
+        public ActionResult UpdateMC(CoalPile coalPile,string type)
+        {
+           this.CreateService<ICoalField>().UpdateMC(coalPile, type);
+            return this.UpdateSuccessMsg();
         }
     }
 }
