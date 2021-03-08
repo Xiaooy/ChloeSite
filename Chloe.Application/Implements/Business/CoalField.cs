@@ -108,6 +108,28 @@ namespace Chloe.Application.Implements.Business
            
         }
 
-         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="bdate"></param>
+        /// <param name="edate"></param>
+        /// <returns></returns>
+        public PagedData<Biz_RlglCzhHygl> GetRlglCzhHyglPagedData(Pagination page, DateTime? bdate, DateTime? edate)
+        {
+            var d_date = DateTime.Now.AddDays(-123);
+            var query = this.dbContextBiz.Query<Biz_RlglCzhHygl>(x => x.Hylx == 160 && x.Hyrq> d_date);
+            if (bdate != null)
+            {
+                query = query.Where(x => x.Hyrq >= bdate);
+            }
+            if (edate != null)
+            {
+                query = query.Where(x => x.Hyrq <= edate);
+            }
+            query = query.OrderByDesc(x => x.Hyrq);
+            PagedData<Biz_RlglCzhHygl> pagedData = query.TakePageData(page);
+            return pagedData;
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace Chloe.Application.Implements.System
             string[] permissionIds = input.GetPermissionIds();
             List<Sys_RoleAuthorize> roleAuthorizeEntitys = this.CreateRoleAuthorizes(role.Id, permissionIds);
 
-            this.DbContext.DoWithTransaction(() =>
+            this.DbContext.UseTransaction(() =>
             {
                 this.DbContext.Insert(role);
 
@@ -64,7 +64,7 @@ namespace Chloe.Application.Implements.System
 
             List<Sys_RoleAuthorize> roleAuthorizeEntitys = this.CreateRoleAuthorizes(role.Id, permissionIds);
 
-            this.DbContext.DoWithTransaction(() =>
+            this.DbContext.UseTransaction(() =>
             {
                 this.DbContext.Update(role);
 
@@ -80,7 +80,13 @@ namespace Chloe.Application.Implements.System
         public void Delete(string id)
         {
             id.NotNullOrEmpty();
-            this.SoftDelete<Sys_Role>(id);
+            //this.SoftDelete<Sys_Role>(id);
+            this.DbContext.Update<Sys_Role>(x => x.Id == id, x => new Sys_Role()
+            {
+                IsDeleted = true,
+                DeleteUserId = this.Session.UserId,
+                DeletionTime = DateTime.Now
+            });
         }
 
         void MapValueFromInput(Sys_Role role, AddOrUpdateRoleInputBase input)

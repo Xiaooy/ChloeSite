@@ -19,11 +19,19 @@ namespace Chloe.Application.Implements.System
     {
         public void EnableAccount(string userId)
         {
-            this.DbContext.Enable<Sys_User>(userId);
+            this.DbContext.Update<Sys_User>(x => x.Id == userId, x => new Sys_User()
+            {
+                IsEnabled = true
+            });
+            //this.DbContext.Enable<Sys_User>(userId);
         }
         public void DisableAccount(string userId)
         {
-            this.DbContext.Disable<Sys_User>(userId);
+            this.DbContext.Update<Sys_User>(x => x.Id == userId, x => new Sys_User()
+            {
+                IsEnabled = false
+            });
+            //this.DbContext.Disable<Sys_User>(userId);
         }
         public void RevisePassword(string userId, string pwdText)
         {
@@ -37,7 +45,7 @@ namespace Chloe.Application.Implements.System
             string userSecretkey = UserHelper.GenUserSecretkey();
             string encryptedPassword = PasswordHelper.Encrypt(pwdText, userSecretkey);
 
-            this.DbContext.DoWithTransaction(() =>
+            this.DbContext.UseTransaction(() =>
             {
                 this.DbContext.Update<Sys_UserLogOn>(a => a.UserId == userId, a => new Sys_UserLogOn() { UserSecretkey = userSecretkey, UserPassword = encryptedPassword });
                 this.Log(Entities.Enums.LogType.Update, "User", true, "重置用户[{0}]密码".ToFormat(userId));
@@ -46,7 +54,13 @@ namespace Chloe.Application.Implements.System
         public void DeleteAccount(string userId)
         {
             userId.NotNullOrEmpty("用户 Id 不能为空");
-            this.SoftDelete<Sys_User>(userId);
+            //this.SoftDelete<Sys_User>(userId);
+            this.DbContext.Update<Sys_User>(x => x.Id == userId, x => new Sys_User()
+            {
+                IsDeleted = true,
+                DeleteUserId = this.Session.UserId,
+                DeletionTime = DateTime.Now
+            });
         }
 
         public void AddUser(AddUserInput input)
@@ -82,7 +96,7 @@ namespace Chloe.Application.Implements.System
             logOnEntity.UserSecretkey = userSecretkey;
             logOnEntity.UserPassword = encryptedPassword;
 
-            this.DbContext.DoWithTransaction(() =>
+            this.DbContext.UseTransaction(() =>
             {
                 this.DbContext.Insert(user);
                 this.DbContext.Insert(logOnEntity);

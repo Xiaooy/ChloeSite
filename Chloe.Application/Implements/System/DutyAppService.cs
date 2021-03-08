@@ -48,7 +48,13 @@ namespace Chloe.Application.Implements.System
         }
         public void Delete(string id)
         {
-            this.SoftDelete<Sys_Duty>(id);
+            //this.SoftDelete<Sys_Duty>(id);
+            this.DbContext.Update<Sys_Duty>(x => x.Id == id, x => new Sys_Duty()
+            {
+                IsDeleted = true,
+                DeleteUserId = this.Session.UserId,
+                DeletionTime = DateTime.Now
+            });
         }
     }
 }

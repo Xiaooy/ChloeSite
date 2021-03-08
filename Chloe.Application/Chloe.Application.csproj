@@ -30,25 +30,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Chloe">
-      <HintPath>..\lib\Chloe\Chloe.dll</HintPath>
+    <Reference Include="Chloe, Version=4.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chloe.4.12.0\lib\net45\Chloe.dll</HintPath>
     </Reference>
-    <Reference Include="Chloe.Extension">
-      <HintPath>..\lib\Chloe\Chloe.Extension.dll</HintPath>
+    <Reference Include="Chloe.Extension, Version=4.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chloe.Extension.4.12.0\lib\net45\Chloe.Extension.dll</HintPath>
     </Reference>
-    <Reference Include="Chloe.MySql, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Chloe\Chloe.MySql.dll</HintPath>
+    <Reference Include="Chloe.MySql, Version=4.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chloe.MySql.4.12.0\lib\net45\Chloe.MySql.dll</HintPath>
     </Reference>
-    <Reference Include="Chloe.Oracle, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Chloe\Chloe.Oracle.dll</HintPath>
+    <Reference Include="Chloe.Oracle, Version=4.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chloe.Oracle.4.12.0\lib\net45\Chloe.Oracle.dll</HintPath>
     </Reference>
-    <Reference Include="Chloe.SQLite">
-      <HintPath>..\lib\Chloe\Chloe.SQLite.dll</HintPath>
+    <Reference Include="Chloe.SQLite, Version=4.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chloe.SQLite.4.12.0\lib\net45\Chloe.SQLite.dll</HintPath>
     </Reference>
-    <Reference Include="Chloe.SqlServer">
-      <HintPath>..\lib\Chloe\Chloe.SqlServer.dll</HintPath>
+    <Reference Include="Chloe.SqlServer, Version=4.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chloe.SqlServer.4.12.0\lib\net45\Chloe.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="DotNet.Utilities">
       <HintPath>..\lib\DotNet.Utilities\DotNet.Utilities.dll</HintPath>
@@ -133,7 +131,9 @@
       <Name>Chloe.Entities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

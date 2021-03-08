@@ -35,5 +35,14 @@ namespace Chloe.Application.Interfaces.Business
         /// <param name="cp"></param>
         /// <param name="type"></param>
         void UpdateMC(CoalPile cp, string type);
+
+        /// <summary>
+        /// 获取化验信息
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="bdate"></param>
+        /// <param name="edate"></param>
+        /// <returns></returns>
+        PagedData<Biz_RlglCzhHygl> GetRlglCzhHyglPagedData(Pagination page, DateTime? bdate, DateTime? edate);
     }
 }

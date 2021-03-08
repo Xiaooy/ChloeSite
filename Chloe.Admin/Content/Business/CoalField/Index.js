@@ -324,7 +324,46 @@ function SynComponent(id) {
         }
         , zIndex: layer.zIndex //重点1
         , success: function (layero) {
-           
+            console.log(layero);
+            layui.table.render({
+                elem: `#component`
+                , height: 412
+                , url: url.GetRlglCzhHyglPagedData + `?bdate=${$("#c-b-date").val()}&bdate=${$("#c-e-date").val()}` //数据接口
+                //, where: { Page: 1, PageSize: 10 } //如果无需传递额外参数，可不加该参数
+                , method: 'get' //如果无需自定义HTTP类型，可不加该参数
+                , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
+
+                    return {
+                        "code": '0', //解析接口状态
+                        "msg": '', //解析提示文本
+                        "count": res.Data.TotalCount, //解析数据长度
+                        "data": res.Data.DataList //解析数据列表
+                    };
+                }
+                , done: function (res, curr, count) {
+                    //如果是异步请求数据方式，res即为你接口返回的信息。
+                    //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                   
+                }
+                , page: true //开启分页
+                , cols: [
+                    [ //表头
+                        {
+                            field: 'Hyrq', title: '取样日期', templet: function (d) {
+                                return d.Dq.split('T')[0]
+                            }
+                        }
+                        , { field: 'Hybh', title: '化验编号' }
+                        , { field: 'Aar', title: '灰分' }
+                        , {
+                            field: 'Var', title: '挥发分'
+                        }
+                        , { field: 'Qnetar', title: '热值' }
+                        , { field: 'Mar', title: '水分' }
+                        , { field: 'Star', title: '硫分' }
+                    ]]
+            });
+
         }
     });
 }

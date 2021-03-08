@@ -87,7 +87,7 @@ namespace Chloe.Application.Implements
             string newUserSecretkey = UserHelper.GenUserSecretkey();
             string newEncryptedPassword = PasswordHelper.Encrypt(newPassword, newUserSecretkey);
 
-            this.DbContext.DoWithTransaction(() =>
+            this.DbContext.UseTransaction(() =>
             {
                 this.DbContext.Update<Sys_UserLogOn>(a => a.UserId == session.UserId, a => new Sys_UserLogOn() { UserSecretkey = newUserSecretkey, UserPassword = newEncryptedPassword });
                 this.Log(Entities.Enums.LogType.Update, "Account", true, "用户[{0}]修改密码".ToFormat(session.UserId));

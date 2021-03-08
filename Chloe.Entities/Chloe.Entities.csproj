@@ -30,11 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Chloe">
-      <HintPath>..\lib\Chloe\Chloe.dll</HintPath>
+    <Reference Include="Chloe, Version=4.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chloe.4.12.0\lib\net45\Chloe.dll</HintPath>
     </Reference>
-    <Reference Include="Chloe.Oracle">
-      <HintPath>..\lib\Chloe\Chloe.Oracle.dll</HintPath>
+    <Reference Include="Chloe.Oracle, Version=4.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chloe.Oracle.4.12.0\lib\net45\Chloe.Oracle.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Biz_MC1.cs" />
     <Compile Include="Biz_MC2.cs" />
+    <Compile Include="Biz_RlglCzhHygl.cs" />
     <Compile Include="DbTables.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\LogType.cs" />
@@ -69,6 +70,9 @@
       <Project>{c7dfa311-7c0c-4eb0-802e-b4d11043d54b}</Project>
       <Name>Ace</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

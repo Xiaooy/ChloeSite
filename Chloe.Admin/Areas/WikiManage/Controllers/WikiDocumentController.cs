@@ -84,8 +84,8 @@ namespace Chloe.Admin.Areas.WikiManage.Controllers
         [HttpPost]
         public ActionResult Delete(string id)
         {
-            IEntityAppService service = this.CreateService<IEntityAppService>();
-            service.SoftDelete<WikiDocument>(id);
+            IWikiDocumentAppService service = this.CreateService<IWikiDocumentAppService>();
+            service.SoftDelete(id);
             return this.SuccessMsg("删除成功");
         }
     }

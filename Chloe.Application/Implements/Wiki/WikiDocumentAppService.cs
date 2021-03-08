@@ -69,5 +69,13 @@ namespace Chloe.Application.Implements.Wiki
             var doc = this.DbContext.QueryByKey<WikiDocumentDetail>(id);
             return doc;
         }
+
+        public void SoftDelete(string id)
+        {
+            this.DbContext.Update<WikiDocumentDetail>(x => x.Id == id, x => new WikiDocumentDetail()
+            {
+                IsDeleted = true
+            });
+        }
     }
 }

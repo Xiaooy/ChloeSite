@@ -35,11 +35,12 @@ namespace Chloe.Application.Implements
             key.NotNullOrEmpty("key 不能为空");
             return this.DbContext.DeleteByKey<T>(key);
         }
-        public int SoftDelete<T>(object key)
-        {
-            key.NotNullOrEmpty("key 不能为空");
-            return this.DbContext.SoftDelete<T>(key);
-        }
+        //public int SoftDelete<T>(object key)
+        //{
+        //    key.NotNullOrEmpty("key 不能为空");
+        //    // return this.DbContext.SoftDelete<T>(key);
+           
+        //}
         public T Insert<T>(T entity)
         {
             return this.DbContext.Insert(entity);

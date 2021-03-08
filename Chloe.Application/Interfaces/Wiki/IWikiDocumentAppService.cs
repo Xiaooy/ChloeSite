@@ -18,5 +18,7 @@ namespace Chloe.Application.Interfaces.Wiki
         List<WikiDocument> GetAll();
         PagedData<WikiDocument> GetPageData(Pagination page, string keyword);
         WikiDocumentDetail GetDocumentDetail(string id);
+
+        void SoftDelete(string id);
     }
 }

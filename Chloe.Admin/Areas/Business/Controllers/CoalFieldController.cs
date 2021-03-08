@@ -46,5 +46,13 @@ namespace Chloe.Admin.Areas.Business.Controllers
            this.CreateService<ICoalField>().UpdateMC(coalPile, type);
             return this.UpdateSuccessMsg();
         }
+
+        [HttpGet]
+        public ActionResult GetRlglCzhHyglPagedData(DateTime? bdate, DateTime? edate, int page = 0, int limit = 0)
+        {
+            Pagination p = new Pagination(page, limit);
+            PagedData<Biz_RlglCzhHygl> pagedData = this.CreateService<ICoalField>().GetRlglCzhHyglPagedData(p, bdate, edate);
+            return this.SuccessData(pagedData);
+        }
     }
 }

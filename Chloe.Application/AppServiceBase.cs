@@ -63,7 +63,7 @@ namespace Chloe.Application
                 {
                     if (startTransaction.HasValue && startTransaction.Value == true)
                     {
-                        dbContext.DoWithTransaction(() =>
+                        dbContext.UseTransaction(() =>
                         {
                             act(dbContext);
                         });

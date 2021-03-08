@@ -1,10 +1,6 @@
 ﻿using Ace.Business;
-using Chloe.Entity;
+using Chloe.Annotations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Chloe.Entities
 {
@@ -50,7 +46,7 @@ namespace Chloe.Entities
         /// 
         /// </summary>
         [Column("CL")]
-        public float  Cl { get; set; }
+        public float Cl { get; set; }
 
         /// <summary>
         /// 
@@ -80,7 +76,7 @@ namespace Chloe.Entities
         /// 
         /// </summary>
         [Column("HF")]
-        public float?  Hf { get; set; }
+        public float? Hf { get; set; }
 
         /// <summary>
         /// 
@@ -120,7 +116,7 @@ namespace Chloe.Entities
         [NotMapped]
         public string[] mdt
         {
-            get;set;
+            get; set;
         }
 
         public void setMdt()

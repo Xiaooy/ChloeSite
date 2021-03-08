@@ -78,7 +78,7 @@ namespace Chloe.Application
         }
         protected void SoftDelete<T>(object id)
         {
-            this.DbContext.SoftDelete<T>(id, this.Session.UserId);
+           // this.DbContext.SoftDelete<T>(id, this.Session.UserId);
         }
 
         Sys_Log CreateLog(LogType logType, string moduleName, bool? result, string description)

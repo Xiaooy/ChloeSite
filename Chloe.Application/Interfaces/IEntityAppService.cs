@@ -19,7 +19,7 @@ namespace Chloe.Application.Interfaces
         int Delete<T>(Expression<Func<T, bool>> predicate);
         int Delete<T>(T entity);
         int DeleteByKey<T>(object key);
-        int SoftDelete<T>(object key);
+        //int SoftDelete<T>(object key);
         T Insert<T>(T entity);
         int Update<T>(T entity);
     }

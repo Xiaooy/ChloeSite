@@ -1,4 +1,5 @@
-﻿using Chloe.Entities.Enums;
+﻿using Chloe.Annotations;
+using Chloe.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Chloe.Entities
 {
     public class Sys_Log
     {
-        [Chloe.Oracle.Sequence("Sys_Log_AUTOID")]
+        [Sequence("Sys_Log_AUTOID")]
         public int Id { get; set; }
         public string UserId { get; set; }
         public string RealName { get; set; }
