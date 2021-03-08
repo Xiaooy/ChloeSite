@@ -171,12 +171,12 @@ function loadtabledata(table) {
                             color:color[j],
                             areaStyle: {
                                 opacity: 0.8,
-                                color: color[j]
+                                color: color[j+1]
                             },
                             itemStyle: {
                                 normal: {
                                     lineStyle: {
-                                        color: color[j]
+                                        color: color[j+1]
                                     }
                                 }
                             }
@@ -243,7 +243,7 @@ function loadChart(series,i) {
            var option1 = {
                 xAxis: {
                     type: 'category',
-                    boundaryGap: false,
+                    boundaryGap: true,
                    data: xdata(81)
                 },
                 yAxis: {
@@ -263,7 +263,7 @@ function loadChart(series,i) {
         var option2 = {
             xAxis: {
                 type: 'category',
-                boundaryGap: false,
+                boundaryGap: true,
                 data: xdata(36)
             },
             yAxis: {
