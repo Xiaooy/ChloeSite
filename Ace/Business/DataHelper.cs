@@ -14,20 +14,22 @@ namespace Ace.Business
             if (type == 1)
                 vs = new string[81];
             else
-                vs = new string[36];
+                vs = new string[72];
             List<string> ls = DataSplit(value, type);//数据拆分后的数组
             //210218220023888888328______431
             //233237244246048367_________471
             //208_________012331_________435
+            //21352140214521502155016088888888319532003210322032304240                                            
             int nowIndex = 0;//当前拆分数组的位置
             int nowValue = 0;//当前有效数组的值
+            int indexLength = type == 1 ? 2 : 3;
             for (int i = 0; i < ls.Count; i++)
             {
                 var start = ls[i].Substring(0, 1);
-                var myIndex = ls[i].Substring(1, 2);
-
+                var myIndex = type == 1 ? ls[i].Substring(1, indexLength) : Convert.ToInt16(ls[i].Substring(1, indexLength)) / 10 * 2 + "";
+                //前一个点的类型和序号
                 var pt = i == 0 ? start : ls[i - 1].Substring(0, 1);
-                var pi = i == 0 ? myIndex : ls[i - 1].Substring(1, 2);
+                var pi = i == 0 ? myIndex : (type == 1 ? ls[i].Substring(1, indexLength) : Convert.ToInt16(ls[i].Substring(1, indexLength)) / 10 * 2 + "");
                 switch (start)
                 {
                     case "2":
@@ -73,7 +75,7 @@ namespace Ace.Business
                             var lss = ls[i + j].Substring(0, 1);
                             if(!lss.Equals("8"))
                             {
-                                var not8index = ls[i + j].Substring(1, 2);
+                                var not8index = ls[i + j].Substring(1, indexLength);
                                 var cc = Convert.ToInt16(not8index) - Convert.ToInt16(nowIndex);//差值
                                 for (int o = 0; o < cc; o++)
                                 {
@@ -112,7 +114,7 @@ namespace Ace.Business
                             if (!lss.Equals("_"))
                             {
                                 laststart = lss;
-                                myIndex = (Convert.ToInt16(ls[i - j].Substring(1, 2)) + j)+"";
+                                myIndex = (Convert.ToInt16(ls[i - j].Substring(1, indexLength)) + j)+"";
                                 break ;
                             }
                         }

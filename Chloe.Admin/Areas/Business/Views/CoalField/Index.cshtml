@@ -10,12 +10,12 @@
 
         <div class="layui-row">
             <div class="layui-inline">
-                <input type="text" class="layui-input" id="c-date" placeholder="请选择时间">
+                <input type="text" class="layui-input" id="c-date">
 
             </div>
             <div class="layui-inline">
 
-                <select name="Type" lay-filter="c-Type" lay-verify="required">
+                <select name="Type" lay-filter="c-Type" lay-verify="required" >
                     <option value="1">一期煤场</option>
                     <option value="2">二期煤场</option>
                 </select>
@@ -27,163 +27,44 @@
         </div>
 
 
-        <div class="layui-row">
+        <div class="layui-row" >
             <div class="layui-row">
-                <div id="container1" style="height: 300px"></div>
+                <div id="container1" style="height: 200px"></div>
             </div>
             <div class="layui-row">
                 <table id="heap1" lay-filter="heap1"></table>
             </div>
         </div>
-        <div class="layui-row">
+        <div class="layui-row" >
             <div class="layui-row">
-                <div id="container2" style="height: 300px"></div>
+                <div id="container2" style="height: 200px"></div>
             </div>
             <div class="layui-row">
                 <table id="heap2" lay-filter="heap2"></table>
             </div>
         </div>
-        <div class="layui-row">
+        <div class="layui-row" >
             <div class="layui-row">
-                <div id="container3" style="height: 300px"></div>
+                <div id="container3" style="height: 200px"></div>
             </div>
             <div class="layui-row">
                 <table id="heap3" lay-filter="heap3"></table>
             </div>
         </div>
-        <div class="layui-row">
+        <div class="layui-row" >
             <div class="layui-row">
-                <div id="container4" style="height: 300px"></div>
+                <div id="container4" style="height: 200px"></div>
             </div>
             <div class="layui-row">
                 <table id="heap4" lay-filter="heap4"></table>
             </div>
         </div>
-        <div class="layui-row">
+        <div class="layui-row" >
             <div class="layui-row">
                 <table id="heap0" lay-filter="heap0"></table>
             </div>
         </div>
     </div>
 </div>
-
-<!-- 编辑 -->
-<div id="model" hidden>
-
-    <div class="layui-row" style="margin-top:10px">
-        <div class="layui-col-xs4">
-            <div class="layui-form-item">
-                <div class="layui-inline"><label class="layui-form-label">煤种</label></div>
-                <div class="layui-inline">
-                    <input type="text" id="mz" name="mz" lay-verify="mz" autocomplete="off" placeholder="请输入煤种" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-xs4">
-            <div class="layui-form-item">
-                <div class="layui-inline"><label class="layui-form-label">存量</label></div>
-                <div class="layui-inline">
-                    <input type="text" id="cl" name="cl" lay-verify="cl" autocomplete="off" placeholder="请输入存量" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-xs4">
-            <div class="layui-form-item">
-                <div class="layui-inline"><label class="layui-form-label">堆期</label></div>
-                <div class="layui-inline">
-                    <input type="text" id="dq" name="dq" lay-verify="dq" autocomplete="off" placeholder="请输入堆期" class="layui-input">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="layui-row" style="margin-top:10px">
-        <div class="layui-col-xs4">
-            <div class="layui-form-item">
-                <div class="layui-inline"><label class="layui-form-label">船名</label></div>
-                <div class="layui-inline">
-                    <input type="text" id="cm" name="cm" lay-verify="cm" autocomplete="off" placeholder="请输入船名" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-xs4">
-            <div class="layui-form-item">
-                <div class="layui-inline"><label class="layui-form-label">灰分</label></div>
-                <div class="layui-inline">
-                    <input type="text" id="hf" name="hf" lay-verify="hf" autocomplete="off" placeholder="请输入灰分" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-xs4">
-            <div class="layui-form-item">
-                <div class="layui-inline"><label class="layui-form-label">挥发分</label></div>
-                <div class="layui-inline">
-                    <input type="text" id="hff" name="hff" lay-verify="hff" autocomplete="off" placeholder="请输入挥发分" class="layui-input">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="layui-row" style="margin-top:10px">
-        <div class="layui-col-xs4">
-            <div class="layui-form-item">
-                <div class="layui-inline"><label class="layui-form-label">热值</label></div>
-                <div class="layui-inline">
-                    <input type="text" id="rz" name="rz" lay-verify="rz" autocomplete="off" placeholder="请输入热值" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-xs4">
-            <div class="layui-form-item">
-                <div class="layui-inline"><label class="layui-form-label">水分</label></div>
-                <div class="layui-inline">
-                    <input type="text" id="sf" name="sf" lay-verify="sf" autocomplete="off" placeholder="请输入水分" class="layui-input">
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-xs4">
-            <div class="layui-form-item">
-                <div class="layui-inline"><label class="layui-form-label">T2</label></div>
-                <div class="layui-inline">
-                    <input type="text" id="t2" name="t2" lay-verify="t2" autocomplete="off" placeholder="请输入T2" class="layui-input">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="layui-row" style="margin-top:10px">
-        <div class="layui-col-xs4">
-            <div class="layui-form-item">
-                <div class="layui-inline"><label class="layui-form-label">硫分</label></div>
-                <div class="layui-inline">
-                    <input type="text" id="lf" name="lf" lay-verify="lf" autocomplete="off" placeholder="请输入硫分" class="layui-input">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 同步 -->
-<div id="tb_mode" hidden style="padding: 15px;">
-    <div class="layui-row">
-        <div class="layui-inline">
-            <input type="text" class="layui-input" id="c-b-date" placeholder="开始时间">
-
-        </div>
-        <div class="layui-inline">
-            <input type="text" class="layui-input" id="c-e-date" placeholder="结束时间">
-        </div>
-        <div class="layui-inline">
-            <button type="button" class="layui-btn layui-btn-normal" id="cx">确定</button>
-        </div>
-    </div>
-    <div class="layui-row">
-        <div class="layui-row">
-            <table id="component" lay-filter="component"></table>
-        </div>
-    </div>
-
-
-</div>
-
-
-    @Html.RefScript("~/Content/Business/Index.js")
-    @Html.RefScript("~/Content/Business/CoalField/Index.js")
+@Html.RefScript("~/Content/Business/Index.js")
+@Html.RefScript("~/Content/Business/CoalField/Index.js")

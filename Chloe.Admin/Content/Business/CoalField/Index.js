@@ -139,12 +139,10 @@ function loadtabledata(table) {
         table.render({
              bs:i
             ,elem: `#heap${i}`
-            , height: 312
             , url: url.GetMCPageData + `?date=${$("#c-date").val()}&heap=${i}&type=${c_Type}` //数据接口
             //, where: { Page: 1, PageSize: 10 } //如果无需传递额外参数，可不加该参数
             , method: 'get' //如果无需自定义HTTP类型，可不加该参数
             , parseData: function (res) { //将原始数据解析成 table 组件所规定的数据
-                
                 return {
                     "code": '0', //解析接口状态
                     "msg": '', //解析提示文本
@@ -264,7 +262,8 @@ function loadChart(series,i) {
             xAxis: {
                 type: 'category',
                 boundaryGap: true,
-                data: xdata(36)
+                data: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5, 34, 34.5, 35, 35.5, 36]
+              
             },
             yAxis: {
                 type: 'value'
